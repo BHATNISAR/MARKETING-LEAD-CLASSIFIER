@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			Machine Learning App with Flask
+		</div>
+		<h2>Predicting the term deposit subscription</h2>
+		
+	</div>
+	</header>
+
+	<div class="ml-container">
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    
+    </div>
+    	<label for="age">Age of the person:</label>
+		<input type="number" id="age" name="age" min="18" max="100">
+	</div>
+		<label for="balance">Balance:Average yearly balance:</label>
+		<input type="number" id="balance" name="balance" min="-10000" max="120000">
+	</div>	
+		<label for="day">Day:Last contact day of the month</label>
+		<input type="number" id="day" name="day" min="1" max="31">
+    </div>
+		<label for="duration">duration:contact duration, in seconds:</label>
+		<input type="number" id="duration" name="duration" min="80" max="650">
+    </div>
+		<label for="campaign">campaign:</label>
+		<input type="number" id="campaign" name="campaign" min="1" max="63">
+    </div>	
+		<label for="pdays">pdays:</label>
+		<input type="number" id="pdays" name="pdays" min="-1" max="900">
+	</div>	
+		<label for="previous">previous:</label>
+		<input type="number" id="previous" name="previous" min="0" max="275">
+    </div>
+		<label for="job">job : type of job</label>
+        <input type="text" id="job" name="job"><br><br>
+	</div>
+		<label for="marital">marital : marital status</label>
+        <input type="text" id="marital" name="marital"><br><br>
+    </div>
+		<label for="education">education</label>
+        <input type="text" id="education" name="education"><br><br>
+    </div>	
+		<label for="default">default: has credit in default?</label>
+        <input type="text" id="default" name="default"><br><br>	
+    </div>	
+		<label for="housing">housing: has housing loan?</label>
+        <input type="text" id="housing" name="housing"><br><br>
+    </div>
+		<label for="loan">loan: has personal loan?</label>
+        <input type="text" id="loan" name="loan"><br><br>
+	</div>
+		<label for="contact">contact: contact communication type</label>
+        <input type="text" id="contact" name="contact"><br><br>
+    </div>
+		<label for="month">month: last contact month of year</label>
+        <input type="text" id="month" name="month"><br><br>
+    </div>	
+		<label for="poutcome">poutcome</label>
+        <input type="text" id="poutcome" name="poutcome"><br><br>	
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+    {% if prediction == 1%}
+	<h2 style="color:white;">Client subscribed for term deposit</h2>
+	{% elif prediction == 0%}
+	<h2 style="color:white;">Client not subscribed for term deposit</h2>
+	{% endif %}
+
+ </div>
+
+
+</body>
+</html>
